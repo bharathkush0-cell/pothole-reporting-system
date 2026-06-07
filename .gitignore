@@ -7,5 +7,6 @@ yarn-error.log*
 coverage/
 *.log
 
-# Ignore runtime uploads and generated assets
-/uploads/
+# Ignore runtime uploads while preserving the placeholder folder
+/uploads/*
+!/uploads/.gitkeep
