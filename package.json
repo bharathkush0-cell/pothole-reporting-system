@@ -1,0 +1,18 @@
+{
+  "name": "pothole-reporting-system",
+  "version": "1.0.0",
+  "description": "AI-powered pothole reporting system with frontend dashboard and simulated backend services.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
