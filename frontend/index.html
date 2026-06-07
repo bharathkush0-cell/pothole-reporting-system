@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoadWatch — AI-Powered Pothole Reporting System</title>
+  <meta name="description" content="Government-grade civic platform to report potholes, track repairs, and view AI analytics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ LANDING ============ -->
+<section id="view-landing" class="view active">
+  <header class="landing-nav glass">
+    <div class="brand">
+      <div class="brand-mark"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div>
+        <div class="brand-name">RoadWatch</div>
+        <div class="brand-tag">Civic AI Platform</div>
+      </div>
+    </div>
+    <nav class="landing-links">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle-landing" title="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+      <button class="btn btn-ghost" data-open="login">Sign In</button>
+      <button class="btn btn-primary" data-open="register">Get Started</button>
+    </div>
+  </header>
+
+  <div id="hero" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="chip"><i class="fa-solid fa-sparkles"></i> AI-POWERED CIVIC PLATFORM</span>
+        <h1>Fix your city's roads,<br/><span class="accent">one report at a time.</span></h1>
+        <p>Snap a pothole, drop the pin, and let our AI rate severity and predict hotspots — so crews fix what matters first.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg" data-open="register"><i class="fa-solid fa-camera"></i> Report a Pothole</button>
+          <button class="btn btn-ghost btn-lg" data-open="login">Open Dashboard</button>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-v">12.4k</div><div class="stat-l">Reports</div></div>
+          <div><div class="stat-v">8.1k</div><div class="stat-l">Resolved</div></div>
+          <div><div class="stat-v">94%</div><div class="stat-l">AI accuracy</div></div>
+        </div>
+      </div>
+      <div class="hero-card glass float-up">
+        <div class="hero-card-head">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span class="muted">live preview</span>
+        </div>
+        <div class="hero-card-body">
+          <div class="mini-photo"><i class="fa-solid fa-road"></i></div>
+          <div class="mini-meta">
+            <div class="row"><span>Severity</span><strong class="sev-high">HIGH</strong></div>
+            <div class="row"><span>Size</span><strong>62 cm</strong></div>
+            <div class="row"><span>Confidence</span><strong>92%</strong></div>
+            <div class="bar"><i style="width:92%"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="section">
+    <h2>About RoadWatch</h2>
+    <p class="lede">A modern civic-tech platform built for municipalities, ward officers, and citizens — bringing pothole reporting, AI severity scoring, crew dispatch, and predictive maintenance into one unified workflow.</p>
+    <div class="about-grid">
+      <div class="about-card glass">
+        <i class="fa-solid fa-people-roof"></i>
+        <h3>For Citizens</h3>
+        <p>Report damaged roads in seconds with photo, GPS, and AI-assisted severity.</p>
+      </div>
+      <div class="about-card glass">
+        <i class="fa-solid fa-people-group"></i>
+        <h3>For Crews</h3>
+        <p>Prioritized work queue with size, depth, and material estimates.</p>
+      </div>
+      <div class="about-card glass">
+        <i class="fa-solid fa-building-columns"></i>
+        <h3>For Administrators</h3>
+        <p>Analytics, hotspot prediction, exports, and audit-ready records.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section alt">
+    <h2>Built for civic scale</h2>
+    <div class="feat-grid">
+      <div class="feat"><i class="fa-solid fa-camera-retro"></i><h4>Photo + GPS reporting</h4><p>One-tap submissions with EXIF and geolocation.</p></div>
+      <div class="feat"><i class="fa-solid fa-brain"></i><h4>AI severity scoring</h4><p>Vision model rates Low / Medium / High with confidence.</p></div>
+      <div class="feat"><i class="fa-solid fa-map-location-dot"></i><h4>Hotspot detection</h4><p>ML clusters predict high-risk roads.</p></div>
+      <div class="feat"><i class="fa-solid fa-truck-fast"></i><h4>Crew dispatch</h4><p>Assign teams, track status, close reports.</p></div>
+      <div class="feat"><i class="fa-solid fa-chart-line"></i><h4>Analytics</h4><p>Trends, severity mix, satisfaction.</p></div>
+      <div class="feat"><i class="fa-solid fa-file-export"></i><h4>PDF / Excel exports</h4><p>Audit-ready records, one click.</p></div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-card glass">
+        <i class="fa-solid fa-envelope"></i>
+        <h4>Email</h4>
+        <p>support@roadwatch.gov</p>
+      </div>
+      <div class="contact-card glass">
+        <i class="fa-solid fa-phone"></i>
+        <h4>Helpline</h4>
+        <p>1800-ROAD-FIX</p>
+      </div>
+      <div class="contact-card glass">
+        <i class="fa-solid fa-location-dot"></i>
+        <h4>Office</h4>
+        <p>Municipal Corp., 3rd Floor</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="landing-footer">
+    <span>© 2026 RoadWatch · Civic AI Platform</span>
+    <span class="muted">Prototype build — all data simulated</span>
+  </footer>
+</section>
+
+<!-- ============ APP SHELL ============ -->
+<div id="view-app" class="view app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div>
+        <div class="brand-name">RoadWatch</div>
+        <div class="brand-tag">Civic AI Platform</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item active" data-screen="dashboard"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a class="nav-item" data-screen="report"><i class="fa-solid fa-camera"></i> Report Pothole</a>
+      <a class="nav-item" data-screen="ai"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Analysis</a>
+      <a class="nav-item" data-screen="analytics"><i class="fa-solid fa-chart-pie"></i> Analytics</a>
+      <a class="nav-item" data-screen="admin"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a>
+      <a class="nav-item" data-screen="profile"><i class="fa-solid fa-user"></i> Profile</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="demo-tag"><i class="fa-solid fa-circle-dot"></i> LIVE DEMO</div>
+      <p>All data is simulated and stored in your browser.</p>
+      <button class="btn btn-ghost btn-block" id="signout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar glass">
+      <button class="icon-btn mobile-only" id="toggle-sidebar"><i class="fa-solid fa-bars"></i></button>
+      <div class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="global-search" placeholder="Search reports, roads, IDs…"/></div>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="theme-toggle-app" title="Theme"><i class="fa-solid fa-moon"></i></button>
+        <button class="icon-btn notif-btn" id="open-notif"><i class="fa-solid fa-bell"></i><span class="dot"></span></button>
+        <div class="avatar" title="Ananya R.">AR</div>
+      </div>
+    </header>
+
+    <!-- DASHBOARD -->
+    <section class="screen active" data-screen="dashboard">
+      <div class="page-head">
+        <div><h1>Welcome back, Ananya</h1><p>Track your reports and city repair progress.</p></div>
+        <button class="btn btn-primary" data-goto="report"><i class="fa-solid fa-plus"></i> New Report</button>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi glass"><div class="kpi-l">Total Reports</div><div class="kpi-v" id="kpi-total">0</div><div class="kpi-trend up"><i class="fa-solid fa-arrow-trend-up"></i> 12% this week</div></div>
+        <div class="kpi glass"><div class="kpi-l">Pending</div><div class="kpi-v" id="kpi-pending">0</div><div class="kpi-trend">awaiting verification</div></div>
+        <div class="kpi glass"><div class="kpi-l">Verified</div><div class="kpi-v" id="kpi-verified">0</div><div class="kpi-trend">passed AI check</div></div>
+        <div class="kpi glass"><div class="kpi-l">Resolved</div><div class="kpi-v" id="kpi-resolved">0</div><div class="kpi-trend up"><i class="fa-solid fa-check"></i> fixed by crews</div></div>
+      </div>
+
+      <div class="row-2">
+        <div class="panel glass">
+          <div class="panel-head"><h3>Reports vs. Resolutions</h3><span class="muted">Last 12 months</span></div>
+          <canvas id="chart-trend" height="120"></canvas>
+        </div>
+        <div class="panel glass">
+          <div class="panel-head"><h3>Live City Map</h3><span class="muted">Markers near you</span></div>
+          <div class="mini-map" id="mini-map"></div>
+          <div class="legend">
+            <span><i class="dot low"></i> Low</span>
+            <span><i class="dot med"></i> Medium</span>
+            <span><i class="dot high"></i> High</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel glass">
+        <div class="panel-head">
+          <h3>Report History</h3>
+          <div class="filters">
+            <select id="filter-status"><option value="">All status</option><option>Pending</option><option>Verified</option><option>In Progress</option><option>Resolved</option></select>
+            <select id="filter-severity"><option value="">All severity</option><option>Low</option><option>Medium</option><option>High</option></select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>ID</th><th>Road / Area</th><th>Severity</th><th>Confidence</th><th>Status</th><th>Reported</th></tr></thead>
+            <tbody id="reports-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORT -->
+    <section class="screen" data-screen="report">
+      <div class="page-head"><div><h1>Report a Pothole</h1><p>Drop a photo and we'll do the rest.</p></div></div>
+      <div class="report-grid">
+        <div class="panel glass">
+          <h3>Photo</h3>
+          <div id="dropzone" class="dropzone">
+            <input type="file" id="file-input" accept="image/*" hidden/>
+            <div class="dz-empty">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <div class="dz-title">Drag &amp; drop a photo</div>
+              <div class="dz-sub">or click to browse · JPG/PNG up to 10MB</div>
+            </div>
+            <img id="preview" alt="preview"/>
+          </div>
+        </div>
+        <div class="panel glass">
+          <h3>Details</h3>
+          <label>Road / Location name</label>
+          <input id="in-road" placeholder="e.g. MG Road near Trinity Circle"/>
+          <label>Area</label>
+          <input id="in-area" placeholder="e.g. Indiranagar"/>
+          <label>Description</label>
+          <textarea id="in-desc" rows="4" placeholder="Size, depth, hazard level…"></textarea>
+          <label>GPS Location</label>
+          <div class="gps-row">
+            <input id="in-gps" placeholder="lat, lng" readonly/>
+            <button class="btn btn-ghost" id="btn-gps"><i class="fa-solid fa-location-crosshairs"></i> Capture</button>
+          </div>
+          <button class="btn btn-primary btn-block btn-lg" id="btn-submit"><i class="fa-solid fa-paper-plane"></i> Submit &amp; Analyze</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI ANALYSIS -->
+    <section class="screen" data-screen="ai">
+      <div class="page-head"><div><h1>AI Analysis</h1><p id="ai-sub">Upload or select a report to view analysis.</p></div></div>
+      <div id="ai-empty" class="panel glass empty">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <p>No analysis yet. Submit a report from the <a data-goto="report">reporting page</a>.</p>
+      </div>
+      <div id="ai-result" class="ai-grid" style="display:none">
+        <div class="panel glass">
+          <div class="ai-photo-wrap">
+            <img id="ai-photo" alt="analysis"/>
+            <div id="ai-box" class="ai-box"><span id="ai-box-label">Primary</span></div>
+          </div>
+          <div class="ai-metrics">
+            <div><div class="m-l">Severity</div><div class="m-v" id="m-sev">—</div></div>
+            <div><div class="m-l">Size</div><div class="m-v" id="m-size">—</div></div>
+            <div><div class="m-l">Confidence</div><div class="m-v" id="m-conf">—</div></div>
+          </div>
+        </div>
+        <div class="panel glass">
+          <h3>Feature breakdown</h3>
+          <div id="ai-features"></div>
+        </div>
+        <div class="panel glass">
+          <h3>Recommendation</h3>
+          <div id="ai-reco" class="reco"></div>
+          <dl class="dl">
+            <div><dt>Crew suggestion</dt><dd>Team B-12</dd></div>
+            <div><dt>Predicted repair time</dt><dd>2.5 hours</dd></div>
+            <div><dt>Cost estimate</dt><dd>₹ 3,800</dd></div>
+            <div><dt>Similar nearby</dt><dd>3 within 500m</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANALYTICS -->
+    <section class="screen" data-screen="analytics">
+      <div class="page-head"><div><h1>Analytics Dashboard</h1><p>Citywide trends, hotspots, and severity mix.</p></div></div>
+      <div class="kpi-grid">
+        <div class="kpi glass"><div class="kpi-l">Active Reports</div><div class="kpi-v" id="a-active">0</div></div>
+        <div class="kpi glass"><div class="kpi-l">AI Hotspots</div><div class="kpi-v">5</div></div>
+        <div class="kpi glass"><div class="kpi-l">Avg. Resolution</div><div class="kpi-v">3.2d</div></div>
+        <div class="kpi glass"><div class="kpi-l">Citizen Satisfaction</div><div class="kpi-v">91%</div></div>
+      </div>
+      <div class="row-2">
+        <div class="panel glass"><div class="panel-head"><h3>Severity distribution</h3></div><canvas id="chart-sev"></canvas></div>
+        <div class="panel glass"><div class="panel-head"><h3>Status summary</h3></div><canvas id="chart-status"></canvas></div>
+      </div>
+      <div class="panel glass">
+        <div class="panel-head"><h3>Monthly report trends</h3></div>
+        <canvas id="chart-monthly" height="100"></canvas>
+      </div>
+    </section>
+
+    <!-- ADMIN -->
+    <section class="screen" data-screen="admin">
+      <div id="admin-login" class="admin-gate">
+        <div class="panel glass admin-card">
+          <div class="lock-mark"><i class="fa-solid fa-shield-halved"></i></div>
+          <h2>Admin Portal</h2>
+          <p class="muted">Authorized personnel only.</p>
+          <label>Username</label><input id="adm-u" placeholder="admin"/>
+          <label>Password</label><input id="adm-p" type="password" placeholder="admin123"/>
+          <button class="btn btn-primary btn-block" id="adm-login"><i class="fa-solid fa-key"></i> Sign in</button>
+          <p class="hint">Demo: <code>admin</code> / <code>admin123</code></p>
+        </div>
+      </div>
+      <div id="admin-body" style="display:none">
+        <div class="page-head"><div><h1>Admin Console</h1><p>Citywide reports &amp; dispatch.</p></div>
+          <div class="exports">
+            <button class="btn btn-ghost" id="exp-pdf"><i class="fa-regular fa-file-pdf"></i> PDF</button>
+            <button class="btn btn-ghost" id="exp-csv"><i class="fa-regular fa-file-excel"></i> Excel</button>
+          </div>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi glass"><div class="kpi-l">Total Reports</div><div class="kpi-v" id="adm-total">0</div></div>
+          <div class="kpi glass"><div class="kpi-l">Pending</div><div class="kpi-v" id="adm-pending">0</div></div>
+          <div class="kpi glass"><div class="kpi-l">Resolved</div><div class="kpi-v" id="adm-resolved">0</div></div>
+          <div class="kpi glass"><div class="kpi-l">High Severity</div><div class="kpi-v" id="adm-high">0</div></div>
+        </div>
+        <div class="panel glass">
+          <div class="panel-head"><h3>All reports</h3>
+            <div class="filters">
+              <input id="adm-search" placeholder="Search…"/>
+              <select id="adm-status"><option value="">All status</option><option>Pending</option><option>Verified</option><option>In Progress</option><option>Resolved</option></select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>ID</th><th>Road</th><th>Severity</th><th>Reporter</th><th>Status</th><th>Action</th></tr></thead>
+              <tbody id="adm-table"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel glass">
+          <div class="panel-head"><h3>Users</h3></div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Name</th><th>Phone</th><th>Reports</th><th>Joined</th></tr></thead>
+              <tbody>
+                <tr><td>Ananya R.</td><td>+91 98xxxxxx10</td><td>14</td><td>Jan 2026</td></tr>
+                <tr><td>Kiran M.</td><td>+91 98xxxxxx22</td><td>9</td><td>Feb 2026</td></tr>
+                <tr><td>Rohit S.</td><td>+91 98xxxxxx34</td><td>7</td><td>Mar 2026</td></tr>
+                <tr><td>Priya N.</td><td>+91 98xxxxxx48</td><td>11</td><td>Mar 2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="screen" data-screen="profile">
+      <div class="page-head"><div><h1>Your Profile</h1><p>Demo profile stored in localStorage.</p></div></div>
+      <div class="row-2">
+        <div class="panel glass">
+          <h3>Account</h3>
+          <div class="profile-row"><div class="avatar lg">AR</div>
+            <div><div class="big">Ananya Rao</div><div class="muted">+91 98xxxxxx10 · Indiranagar</div></div>
+          </div>
+          <label>Display name</label><input id="prof-name" value="Ananya Rao"/>
+          <label>Phone</label><input id="prof-phone" value="+91 98xxxxxx10"/>
+          <label>Area</label><input id="prof-area" value="Indiranagar"/>
+          <button class="btn btn-primary" id="prof-save">Save changes</button>
+        </div>
+        <div class="panel glass">
+          <h3>Preferences</h3>
+          <div class="pref"><span>Email notifications</span><label class="switch"><input type="checkbox" checked/><i></i></label></div>
+          <div class="pref"><span>SMS alerts on status change</span><label class="switch"><input type="checkbox" checked/><i></i></label></div>
+          <div class="pref"><span>Public profile</span><label class="switch"><input type="checkbox"/><i></i></label></div>
+          <div class="pref"><span>Dark mode</span><label class="switch"><input type="checkbox" id="dark-switch"/><i></i></label></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Notifications drawer -->
+<aside id="notif-panel" class="notif-panel glass">
+  <div class="np-head"><h3>Notifications</h3><button class="icon-btn" id="close-notif"><i class="fa-solid fa-xmark"></i></button></div>
+  <ul class="np-list">
+    <li><i class="fa-solid fa-check-circle ok"></i><div><strong>PH-1003 resolved</strong><div class="muted">Crew B-12 closed your report on MG Road.</div></div></li>
+    <li><i class="fa-solid fa-clock warn"></i><div><strong>PH-1009 verified</strong><div class="muted">Scheduled for repair in 48h.</div></div></li>
+    <li><i class="fa-solid fa-bolt accent"></i><div><strong>New hotspot detected</strong><div class="muted">Outer Ring Rd risk score rose to 92%.</div></div></li>
+    <li><i class="fa-solid fa-circle-info"></i><div><strong>Safety tip</strong><div class="muted">Reduce speed on wet roads after monsoon.</div></div></li>
+  </ul>
+</aside>
+
+<!-- AI chatbot -->
+<button id="chat-fab" class="chat-fab" title="AI Assistant">
+  <i class="fa-solid fa-comments"></i>
+  <span class="chat-pulse"></span>
+</button>
+<div id="chat-panel" class="chat-panel glass">
+  <header class="chat-head">
+    <div class="chat-who">
+      <div class="ai-mark"><i class="fa-solid fa-robot"></i></div>
+      <div><strong>RoadWatch AI</strong><div class="muted small">Online · Civic assistant</div></div>
+    </div>
+    <button class="icon-btn" id="chat-close"><i class="fa-solid fa-xmark"></i></button>
+  </header>
+  <div id="chat-body" class="chat-body"></div>
+  <div class="chat-quick" id="chat-quick">
+    <button>How do I report a pothole?</button>
+    <button>What does Severity mean?</button>
+    <button>Road safety tips</button>
+    <button>Track my report</button>
+  </div>
+  <form id="chat-form" class="chat-input">
+    <input id="chat-text" placeholder="Ask the assistant…" autocomplete="off"/>
+    <button class="btn btn-primary" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+  </form>
+</div>
+
+<!-- Auth modals -->
+<div class="modal-back" id="modal-back"></div>
+<div id="modal-login" class="modal glass">
+  <header><h3>Sign in to RoadWatch</h3><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></header>
+  <label>Phone number</label><input id="login-phone" placeholder="+91 98xxxxxxxx"/>
+  <label>OTP <span class="muted small">(demo auto-fills)</span></label><input id="login-otp" placeholder="123456" maxlength="6"/>
+  <button class="btn btn-primary btn-block" id="do-login">Verify &amp; Sign in</button>
+  <p class="hint">No real SMS sent. Demo OTP shown below the field on send.</p>
+  <button class="btn btn-ghost btn-block" id="send-otp">Send OTP</button>
+  <div id="otp-hint" class="muted small"></div>
+</div>
+<div id="modal-register" class="modal glass">
+  <header><h3>Create your account</h3><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></header>
+  <label>Full name</label><input id="reg-name" placeholder="Ananya Rao"/>
+  <label>Phone</label><input id="reg-phone" placeholder="+91 98xxxxxxxx"/>
+  <label>Area</label><input id="reg-area" placeholder="Indiranagar"/>
+  <button class="btn btn-primary btn-block" id="do-register">Continue</button>
+</div>
+
+<!-- Toasts -->
+<div id="toast-wrap" class="toast-wrap"></div>
+
+<!-- ====== RoadWatch Simulated Backend (load order matters) ====== -->
+<script src="../backend/storage.js"></script>
+<script src="../backend/database.js"></script>
+<script src="../backend/auth.js"></script>
+<script src="../backend/reports.js"></script>
+<script src="../backend/ai-engine.js"></script>
+<script src="../backend/notifications.js"></script>
+<script src="../backend/admin.js"></script>
+<script src="../backend/analytics.js"></script>
+<script src="../backend/api.js"></script>
+<!-- ====== Frontend Application ====== -->
+<script src="script.js"></script>
+</body>
+</html>
